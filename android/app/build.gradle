@@ -250,10 +250,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-implementation project(':react-native-fs')
-implementation project(':react-native-linear-gradient')
-implementation project(':react-native-razorpay')
-
+    implementation project(':react-native-fs')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':rn-fetch-blob')
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 

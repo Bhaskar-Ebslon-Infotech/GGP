@@ -122,6 +122,7 @@ export default function KidPin(props) {
                 let { data: validPlanRes } = await getValidSubscriptionByPhone(currentKid._id)
                 if (validPlanRes.data.hasActivePackage == false) {
                     setToggleModal(true)
+                    setLoading(false)
                     setMessage("Could not login because you do not have a valid subscription plan")
                     return;
                 }
@@ -137,7 +138,8 @@ export default function KidPin(props) {
                     await setFavcyAuthToken(res?.favcyToken);
                     await setAuthToken(res?.data);
                     setIsAuthorized(true);
-                    setPassword('')
+                    setPassword('');
+                    setLoading(false);
                     props.navigation.navigate("KidRootStack")
                 }
             }

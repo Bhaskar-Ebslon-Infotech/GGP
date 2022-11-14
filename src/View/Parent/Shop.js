@@ -133,7 +133,7 @@ export default function Shop(props) {
                         filteredArr.push(el);
                     }
                 };
-                console.log(JSON.stringify(filteredArr, null, 2), "filtered Arr 1");
+                // console.log(JSON.stringify(filteredArr, null, 2), "filtered Arr 1");
                 setProductsArr(filteredArr);
                 setDisplayProductsArr(filteredArr);
             }
@@ -153,11 +153,11 @@ export default function Shop(props) {
     }
 
 
-    const handleGetSameProductData = async () => {
+    const handleGetSaleProductData = async () => {
         setLoading(true)
         try {
             let { data: res } = await getShopSaleProducts();
-            // console.log(JSON.stringify(res?.data?.inventory_Data.item, null, 2), "products");
+            console.log(JSON.stringify(res?.data, null, 2), "Sale products");
             if (res.data) {
                 let filteredArr = [];
                 for (const el of res?.data?.inventory_Data) {
@@ -189,7 +189,7 @@ export default function Shop(props) {
         if (focused) {
             handleGetCategoriesData();
             handleGetProductData();
-            handleGetSameProductData();
+            handleGetSaleProductData();
         }
     }, [focused])
 

@@ -194,7 +194,6 @@ export default function AddFrequency(props) {
         })
       }
       else {
-        console.log(selectedItem, "selectedItem")
         if (!selectedItem.timeAndDateObj) {
           setToggleModal(true)
           setMessage("Please add time and date")
@@ -225,8 +224,6 @@ export default function AddFrequency(props) {
 
         }
       }
-
-      console.log("here")
       if (selectedMission && selectedMission?.disabled == false && obj?.timeAndDateObj && obj?.timeAndDateObj?.daysArr.every(el => el.selected == false) || (obj?.timeAndDateObj?.stopAfter == 0)) {
         setToggleModal(true)
         setMessage("Please add 'Stop On' OR 'Stop After' frequency and select at least one Day from 'Repeat On' to set Time and Date")
@@ -234,14 +231,6 @@ export default function AddFrequency(props) {
         return;
       }
 
-
-
-      if (selectedMission && selectedMission?.attributesArr && selectedMission?.attributesArr.length > 0 && selectedMission?.attributesArr.some(el => el.name.toLowerCase() == "reward" && el.coinsAmount == "0")) {
-        setToggleModal(true)
-        setMessage("Please add reward")
-        setLoading(false)
-        return;
-      }
       if (selectedMission && selectedMission?.attributesArr && selectedMission?.attributesArr.length > 0 && selectedMission?.attributesArr.some(el => el.name.toLowerCase() == "reward" && parseInt(el.coinsAmount) > 9999)) {
         setToggleModal(true)
         setMessage("Maximum 9999 is possible as reward")
@@ -254,7 +243,7 @@ export default function AddFrequency(props) {
         setLoading(false)
         return;
       }
-      if (selectedMission && selectedMission?.attributesArr && selectedMission?.attributesArr.length > 0 && selectedMission?.attributesArr.some(el => el.name.toLowerCase() == "reward" && el.coinsAmount == "0")) {
+      if (selectedMission && selectedMission?.attributesArr && selectedMission?.attributesArr.length > 0 && selectedMission?.attributesArr.some(el => el.name.toLowerCase() == "reward" && parseInt(el.coinsAmount) <= 0)) {
         setToggleModal(true)
         setMessage("Minimun 1 is possible as reward")
         setLoading(false)
@@ -271,7 +260,7 @@ export default function AddFrequency(props) {
           return;
         }
 
-        console.log("create")
+        // console.log("create")
         let { data: res } = await createMissions(obj)
         if (res) {
           setSelectedItem({})
@@ -288,7 +277,7 @@ export default function AddFrequency(props) {
         // obj.attributesArr = obj?.attributesArr?.filter(el => `${el?.name}`.toLowerCase() != "Streak".toLowerCase())
 
         // console.log(JSON.stringify(obj?.attributesArr?.filter(el => `${el?.name}`.toLowerCase() != "Streak".toLowerCase()), null, 2))
-        console.log(JSON.stringify(obj, null, 2))
+        // console.log(JSON.stringify(obj, null, 2))
 
 
 

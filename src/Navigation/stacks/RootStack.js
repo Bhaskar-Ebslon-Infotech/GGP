@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, AppState } from 'react-native';
 import { axiosApiInstance, toggleModalContext } from '../../../App';
-import { getAuthToken } from '../../api/user';
+import { createPin, getAuthToken } from '../../api/user';
 import { authContext } from "../../Context/AuthContext";
 import { RoleContext } from '../../Context/RoleContext';
 import { Colors } from '../../Styles/theme';
@@ -170,14 +170,14 @@ export default function MyStack() {
                                 </>
                                 :
                                 <>
-                                    {/* <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} /> */}
+                                    <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} />
                                     <Stack.Screen options={{ headerShown: false }} name="KidRegister" component={KidRegister} />
                                     <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
                                     <Stack.Screen options={{ headerShown: false }} name="ForgetPin" component={ForgetPin} />
                                     <Stack.Screen options={{ headerShown: false }} name="ForgetPinSuc" component={ForgetPinSuc} />
                                     <Stack.Screen options={{ headerShown: false }} name="ChangePinSuc" component={ChangePinSuc} />
                                     <Stack.Screen options={{ headerShown: false }} name="LoginParent" component={LoginParent} />
-                                    <Stack.Screen options={{ headerShown: false }} name="CreatePin" component={CreatePin} />
+                                    <Stack.Screen options={{ headerShown: false }} name="CreatePin" component={createPin} />
                                     <Stack.Screen options={{ headerShown: false }} name="ParentForgetPin" component={ParentForgetPin} />
                                     <Stack.Screen options={{ headerShown: false }} name="LoginOption" component={LoginOption} />
                                     <Stack.Screen options={{ headerShown: false }} name="KidLogin" component={KidLogin} />

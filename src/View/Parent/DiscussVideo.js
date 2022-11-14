@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: Typography.FONT_SIZE_17,
-        width: '70%',
+        maxWidth: '70%',
         fontFamily: 'Montserrat-SemiBold',
         color: Colors.PRIMARY
     },
